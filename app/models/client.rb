@@ -6,4 +6,5 @@ class Client < ApplicationRecord
   validates :country, presence: true
   validates :address, presence: true
   validates :phone, presence: true
+  has_many :orders
 end
