@@ -14,8 +14,14 @@ class OrdersController < ApplicationController
     end
 
     def destroy
+        @client = Post.find(params[:client_id])
         @order = Order.find(params[:id])
         @order.destroy
-        #redirect_to root_path
+    
+        respond_to do |format|
+          format.html { redirect_to client_order_path(@client) }
+          format.xml  { head :ok }
+        end
     end
-end
+
+  end
