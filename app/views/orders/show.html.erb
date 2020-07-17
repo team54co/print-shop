@@ -1,0 +1,5 @@
+<h3> You are here to create a new order for
+ <%= @client.first_name %> <%= @client.last_name %>
+ </h3>
+ <p> If you are no longer interested in creating this order, pls delete it</p>
+  <%= link_to 'Delete Order' ,@order , method: :destroy %> <br>
