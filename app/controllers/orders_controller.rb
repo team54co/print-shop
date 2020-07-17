@@ -7,10 +7,13 @@ class OrdersController < ApplicationController
 
 
     def show
-       @client = Client.find(params[:client_id])
+      @client = Client.find(params[:client_id]) if params[:client_id] 
+      @order = Order.find(params[:id])
     end
 
     def index
+      @client = Client.find(params[:client_id])
+      @orders = @client.orders
     end
 
     def destroy
@@ -19,7 +22,7 @@ class OrdersController < ApplicationController
         @order.destroy
     
         respond_to do |format|
-          format.html { redirect_to client_path(@client) }
+          format.html { redirect_to client_orders_path(@client) }
           format.xml  { head :ok }
         end
     end

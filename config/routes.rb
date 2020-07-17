@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 resources :clients do
   resources :orders
 end
+resources :orders do
+  resources :ordered_products
+end
 end
