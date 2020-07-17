@@ -8,4 +8,6 @@ end
 resources :orders do
   resources :ordered_products
 end
+
+resources :products
 end

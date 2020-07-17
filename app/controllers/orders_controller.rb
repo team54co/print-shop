@@ -7,8 +7,8 @@ class OrdersController < ApplicationController
 
 
     def show
-      @client = Client.find(params[:client_id]) if params[:client_id] 
       @order = Order.find(params[:id])
+      @client = @order.client
     end
 
     def index
