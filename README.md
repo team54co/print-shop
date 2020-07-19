@@ -1,6 +1,24 @@
-# Print Shop Project
+# README
 
-Contact: +52 1 81 1600 0933
-Roberto Ramirez
-AFG
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
