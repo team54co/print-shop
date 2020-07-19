@@ -1,0 +1,12 @@
+<b>
+<%= link_to name(@client), @client%> has <%= @orders.count%> orders
+</b>
+<ul>
+  <% @orders.each do |order| %>
+    <li>
+      <%= time_ago_in_words(order.created_at)%> ago <br>
+      
+      <%= link_to title(order), client_order_path(@client, order) %>
+      </li>
+      <% end %>
+      </ul>
