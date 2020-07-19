@@ -10,6 +10,51 @@
   </head>
 
   <body>
+   <div id="app">
+      <div class="main-wrapper">
+        <div class="navbar-bg"></div>
+        
+        <div class="main-sidebar">
+          <aside id="sidebar-wrapper">
+            <div class="sidebar-brand">
+              <a href="index.html">Print Shop</a>
+            </div>
+            <div class="sidebar-brand sidebar-brand-sm">
+              <a href="index.html">St</a>
+            </div>
+            <ul class="sidebar-menu">
+              <li class="menu-header">Departments</li>
+              
+                <span class="nav-link">Design</span>
+                <span class="nav-link">Production</span>
+                <span class="nav-link">Flexo</span>
+               
+              </li>
+
+              <li class="menu-header">Orders</li>
+              
+                <span class="nav-link">Active</span>
+                <span class="nav-link">Completed</span>
+                <span class="nav-link">Deliveried</span>
+               
+              </li>
+
+               <li class="menu-header">Sales</li>
+              
+                <span class="nav-link">Order Creation</span>
+                <span class="nav-link">Billing Status</span>
+                
+               
+              </li>
+              
+          </aside>
+        </div>
+
     <%= yield %>
+
+    </div>
+  </div>
+
+
   </body>
 </html>
