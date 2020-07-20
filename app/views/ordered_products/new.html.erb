@@ -1,7 +1,14 @@
-Add an Item To <%= link_to title(@order), client_order_path(@order.client, @order) %> belonging to
- <%=link_to name(@order.client), @order.client%>
-<br><br>
- <%= form_with model: [@order, @ordered_product] do |f| %>
+<div class="main-content">
+<section class="section">
+   <div class="section-header">
+      <h1>Ordenes</h1>
+   </div>
+</section>
+<div class="col-12 col-md-6 col-lg-6">
+   Add an Item To <%= link_to title(@order), client_order_path(@order.client, @order) %> belonging to
+   <%=link_to name(@order.client), @order.client%>
+   <br><br>
+   <%= form_with model: [@order, @ordered_product] do |f| %>
    Already Existing Product? Pick from these options
    <% products_array = @products.map { |product| [product.name, product.id] } %>
    <% products_array = [["Select One", 0]] + products_array %>
@@ -9,45 +16,44 @@ Add an Item To <%= link_to title(@order), client_order_path(@order.client, @orde
    <br>
    If not, Create a new Product
    <br>
-  <div class="hidden_field">
-   Product Attributes:
-   <br>
-   <%= f.label :name %>
-   <%= f.text_field :name %>
-   <br>
-   <%= f.label :price %>
-   <%= f.text_field :price %>
-   <br>
-   <%= f.label :description %>
-   <%= f.text_area :description %>
+   <div class="hidden_field">
+      Product Attributes:
+      <br>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <br>
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+      <br>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
    </div>
    <br>
-  Product Specific Attributes for this Order:
-  <ul>
-    <%= f.fields_for :specific do |addresses_form| %>
+   Product Specific Attributes for this Order:
+   <ul>
+      <%= f.fields_for :specific do |addresses_form| %>
       <li>
-        <%= addresses_form.label :quantity %>
-        <%= addresses_form.number_field :quantity %>
- <br>
-        <%= addresses_form.label :alteration %>
-        <%= addresses_form.text_area :alteration %>
+         <%= addresses_form.label :quantity %>
+         <%= addresses_form.number_field :quantity %>
+         <br>
+         <%= addresses_form.label :alteration %>
+         <%= addresses_form.text_area :alteration %>
       </li>
-    <% end %>
-  </ul>
-  <%= f.submit 'Add Product' %>
-   
-<% end %>
-
+      <% end %>
+   </ul>
+   <%= f.submit 'Add Product' %>
+   <% end %>
+</div>
 <script>
-$(document).ready(function(){
-    console.log('hello')
-    $("#ordered_product_product_id").change(function(){
-        if($("#ordered_product_product_id").val() != "0"){
-          $(".hidden_field").fadeOut('fast')
-        }
-          else {
-         $(".hidden_field").fadeIn('fast')   
-        }            
-    });        
-});
+   $(document).ready(function(){
+       console.log('hello')
+       $("#ordered_product_product_id").change(function(){
+           if($("#ordered_product_product_id").val() != "0"){
+             $(".hidden_field").fadeOut('fast')
+           }
+             else {
+            $(".hidden_field").fadeIn('fast')   
+           }            
+       });        
+   });
 </script>
