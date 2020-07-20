@@ -1,12 +1,26 @@
-<b>
-<%= link_to name(@client), @client%> has <%= @orders.count%> orders
-</b>
-<ul>
-  <% @orders.each do |order| %>
-    <li>
-      <%= time_ago_in_words(order.created_at)%> ago <br>
+<div class="main-content">
+  <section class="section">
+      <div class="section-header">
+        <h1>Ordenes</h1>
+              
+       </div>
+    </section>  
+    
+  <div class="col-12 col-md-6 col-lg-6">
+     
+       <%= link_to name(@client), @client%> has <%= @orders.count%> orders
       
-      <%= link_to title(order), client_order_path(@client, order) %>
-      </li>
+        
+        <% @orders.each do |order| %>
+        <div class="card">
+        
+        <%= time_ago_in_words(order.created_at)%> ago <br>
+      
+        <%= link_to title(order), client_order_path(@client, order) %>
+        
+        </div>
       <% end %>
-      </ul>
+       
+       
+</div>
+</div>

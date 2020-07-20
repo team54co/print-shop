@@ -1,57 +1,47 @@
 <div class="main-content">
-          <section class="section">
-            <div class="section-header">
-              <h1>All Orders</h1>
+  <section class="section">
+      <div class="section-header">
+        <h1>Clientes</h1>
               
-            </div>
-            </section>
- 
-        <div class="row">
-              <div class="col-12 col-md-6 col-lg-6">
-                <div class="card">
-                  <div class="card-header">
-                    
-                  </div>
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-bordered table-md">
-                        <tr>
-                          <th>#</th>
-                          <th>Client</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
-                        </tr>
-                        <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Design</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-primary">Production</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Quality</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Design</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+       </div>
+    </section>  
+<div class="row">
+
+<div class="col-12 col-md-12 col-lg-12">
+  
+     <div class="card">
+     
+       <div class="card-header">
+       <td><%= link_to "Crear Cliente", new_client_path(@client), class: "btn btn-danger" %></td>   
+
+       </div>
+<div class="card-body">
+      <div class="table-responsive">
+         <table class="table table-bordered table-lg">   
+          <tr>
+           <th>#</th>
+           <th>Cliente</th>
+           <th>Direccion</th>
+           <th>Telefono</th>
+           <th></th>
+           <th></th>
+            </tr>
+             
+                            
+            <% @clients.each do |client| %>
+        
+            <tr>
+                        
+            <td><%= client.id %></td>
+            <td><%= "#{client.first_name} #{client.last_name}"%></td>
+            <td><%= client.address %></td>   
+            <td><div class="badge badge-success"><%= client.phone %></div></td>  
+            <td><%= link_to "Ordenes", client_orders_path(:client_id => client.id), class: "btn btn-primary" %></td>
+            <td><%= link_to "Detalles", client_path(client), class: "btn btn-secondary" %></td>
+             </tr>
+            <% end %>  
                       </table>
                     </div>
                   </div>
-      </div>
-      </div>
+</div>
+</div>
