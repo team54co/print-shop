@@ -1,48 +1,62 @@
 <div class="main-content">
 <section class="section">
    <div class="section-header">
-      <h1>Ordenes</h1>
+      <h1>Nuevo Producto</h1>
    </div>
 </section>
-<div class="col-12 col-md-6 col-lg-6">
+<div class="col-12 col-md-6 col-lg-6 ">
+<div class="card col-12">
    Add an Item To <%= link_to title(@order), client_order_path(@order.client, @order) %> belonging to
    <%=link_to name(@order.client), @order.client%>
    <br><br>
+
+
+
+
+
    <%= form_with model: [@order, @ordered_product] do |f| %>
    Already Existing Product? Pick from these options
+   
    <% products_array = @products.map { |product| [product.name, product.id] } %>
    <% products_array = [["Select One", 0]] + products_array %>
-   <%= f.select :product_id ,options_for_select(products_array) %>
+   <div class="form-group">
+   <%= f.select :product_id , options_for_select(products_array), class: "form-control"%>
+   </div>
    <br>
    If not, Create a new Product
    <br>
+   <div class="form-group">
    <div class="hidden_field">
+   
       Product Attributes:
       <br>
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: "form-control" %>
       <br>
       <%= f.label :price %>
-      <%= f.text_field :price %>
+      <%= f.text_field :price, class: "form-control" %>
       <br>
       <%= f.label :description %>
-      <%= f.text_area :description %>
+      <%= f.text_area :description, class: "form-control",  rows: "10" %>
    </div>
    <br>
    Product Specific Attributes for this Order:
+   <div class="form-group">
    <ul>
       <%= f.fields_for :specific do |addresses_form| %>
       <li>
          <%= addresses_form.label :quantity %>
-         <%= addresses_form.number_field :quantity %>
+         <%= addresses_form.number_field :quantity, class: "form-control" %>
          <br>
          <%= addresses_form.label :alteration %>
-         <%= addresses_form.text_area :alteration %>
+         <%= addresses_form.text_area :alteration, class: "form-control", size: "30x10" %>
       </li>
       <% end %>
    </ul>
+   </div>
    <%= f.submit 'Add Product' %>
    <% end %>
+</div>
 </div>
 <script>
    $(document).ready(function(){
