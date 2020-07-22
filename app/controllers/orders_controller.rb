@@ -12,8 +12,15 @@ class OrdersController < ApplicationController
     end
 
     def index
-      @client = Client.find(params[:client_id])
+      if params[:client_id]
+      @client = Client.find(params[:client_id]) 
       @orders = @client.orders
+      elsif params[:product_id]
+        @product = Product.find(params[:product_id])
+        @orders = @product.orders
+      else
+        @orders = Orders.all
+      end
     end
 
     def destroy

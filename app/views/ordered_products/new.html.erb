@@ -45,11 +45,13 @@
    <ul>
       <%= f.fields_for :specific do |addresses_form| %>
       <li>
-         <%= addresses_form.label :quantity %>
-         <%= addresses_form.number_field :quantity, class: "form-control" %>
-         <br>
-         <%= addresses_form.label :alteration %>
-         <%= addresses_form.text_field :alteration, class: "form-control", size: "30x10" %>
+
+        <%= addresses_form.label :quantity %>
+        <%= addresses_form.number_field :quantity %>
+ <br>
+        <%= addresses_form.label :alterations %>
+        <%= addresses_form.text_area :alterations %>
+
       </li>
       <% end %>
    </ul>

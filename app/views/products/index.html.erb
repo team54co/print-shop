@@ -1,0 +1,6 @@
+  <%= render partial: 'layouts/flash'%>
+<h4> All Products </h4>
+<% @products.each do |product| %>
+  <%= link_to product.name ,product %>
+  <br>
+<% end %>

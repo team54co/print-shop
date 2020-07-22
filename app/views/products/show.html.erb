@@ -1,0 +1,10 @@
+  <%= render partial: 'layouts/flash'%>
+  
+  <%= link_to 'Product Orders', product_orders_path(@product) %>
+  <%= link_to 'Edit Product', edit_product_path(@product) %>
+  <%= link_to 'Delete Product', @product, method: :delete, data: {confirm: "Are you sure?"}  %>
+
+ <h3>Name: <%= @product.name %></h3>
+ <p>Description:  <%= @product.description %>  </p>
+ <p>Price:  <%= @product.price %>  </p>
+ 
