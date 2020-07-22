@@ -1,24 +1,63 @@
-<h3> This is an order for
- <%= link_to name(@client), @client %>
- </h3>
+<div class="main-content">
+<section class="section">
+   <div class="section-header">
+      <h1>Detalle de Orden</h1>
+   </div>
+</section>
+<div class="row">
+<div class="col-12 col-md-12 col-lg-12">
+<h3> 
+   <%= link_to name(@client), @client %> 
+</h3>
 
- <%= link_to 'Add Item', new_order_ordered_product_path(@order) %>
-  <% if counter(@order) %>
-  <b> The order contains the following items</b>
-  <ul>
-  <% @order.ordered_products.each do |item| %>
-    <li>
-     Name: <%= item.product.name %> <br>
-     Status:  <%= item.status %> <br>
-      Description : <%= item.product.description  %> <br>
-      Alterations : <%= item.alterations  %> <br>
-      Quantity : <%= item.quantity  %> <br>
-      Unit Price: <%= item.product.price  %> <br>
-      Total Price : <%= item.quantity * item.product.price  %> <br>
-      </li>
-      <% end %>
-      </ul>
-      <% else %>
-      <b>There are no items yet in this order, Please add items or delete the order</b>
-  <% end %>
-<%= link_to 'Delete Order' ,client_order_path(@client) , method: :delete, data: {confirm: "Are you sure?"} %> <br>
+<% if counter(@order) %>
+     
+
+   <div class="card">
+      <div class="card-header">
+         <td> <%= link_to 'Add Item', new_order_ordered_product_path(@order), class: "btn btn-success"%></td>
+      </div>
+      <div class="card-body">
+         <div class="table-responsive">
+            <table class="table table-bordered table-lg">
+               <tr>
+                  <th>Nombre</th>
+                  <th>Status</th>
+                  <th>Descripcion</th>
+                  <th>Alteraciones</th>
+                  <th>Cantidad</th>
+                  <th>Precio Unitario</th>
+                  <th>Precio Total</th>
+               </tr>
+           
+
+                <% @order.ordered_products.each do |item| %>
+   
+         
+               <tr>
+                  <td> <span class="font-weight-bold"><%= item.product.name %></span></td>
+                  <td> <%= item.status%>
+                  <td><%= item.product.description  %></td>
+                  <td><%= item.alterations  %></td>
+                  <td>
+                      <%= item.quantity  %> 
+                  </td>
+                  <td> <%= item.product.price  %></td>
+                  <td><%= item.quantity * item.product.price  %> </td>
+               </tr>
+               <% end %>  
+            </table>
+         </div>
+      </div>
+  </div>
+  <% else %>
+    <h1> Sin ordenes. </h1>
+    <% end %>
+  <div class="ordered-products-delete">
+   <span class="btn btn-danger float-right"><%= link_to 'Delete Order' ,client_order_path(@client) , method: :delete, data: {confirm: "Are you sure?"} %> <br></span>
+   </div>
+</div>
+
+
+     
+  
