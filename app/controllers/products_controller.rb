@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
         else
           render "edit"
         end
-      end
+    end
     
     def create
       product = Product.new(product_params)
