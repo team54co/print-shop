@@ -36,10 +36,12 @@ class ProductsController < ApplicationController
 
     def destroy
         @product = Product.find(params[:id])
-        if @product.destroy
+
+        if @product.orders.count == 0 &&  @product.destroy
+          flash.now[:notice] = 'Product cannot be deleted because product has existing orders'
             redirect_to products_path 
         else
-            redirect_to product_path(@product)
+          render action: 'show'
         end
 
     end
