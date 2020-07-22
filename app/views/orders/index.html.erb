@@ -1,12 +1,21 @@
+<% if @client%>
 <b>
 <%= link_to name(@client), @client%> has <%= @orders.count%> orders
 </b>
+<% elsif @product %>
+<b>
+<%= link_to @product.name, @product %> has <%= @orders.count%> orders
+</b>
+<% end %>
 <ul>
   <% @orders.each do |order| %>
     <li>
       <%= time_ago_in_words(order.created_at)%> ago <br>
-      
+      <% if @client %>
       <%= link_to title(order), client_order_path(@client, order) %>
+      <% elsif @product%>
+      <%= link_to title(order), product_order_path(@product, order) %>
+      <% end %>
       </li>
       <% end %>
       </ul>

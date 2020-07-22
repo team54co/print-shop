@@ -9,5 +9,7 @@ resources :orders do
   resources :ordered_products
 end
 
-resources :products
+resources :products do
+  resources :orders
+end
 end
