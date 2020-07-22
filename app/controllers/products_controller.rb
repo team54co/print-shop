@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     def create
         product = Product.new(product_params)
         if product.save
-          redirect_to product
+          redirect_to product, notice: "Product successfully created"
         else
           render new
         end  
@@ -28,7 +28,8 @@ class ProductsController < ApplicationController
     def update
         @product = Product.find(params[:id])
         if @product.update(product_params)
-          redirect_to(@product)
+          flash[:notice] = "Product successfully updated"
+          redirect_to @product
         else
           render "edit"
         end
@@ -38,10 +39,12 @@ class ProductsController < ApplicationController
         @product = Product.find(params[:id])
 
         if @product.orders.count == 0 &&  @product.destroy
-          flash.now[:notice] = 'Product cannot be deleted because product has existing orders'
-            redirect_to products_path 
+            redirect_to products_path, notice: "Product successfully deleted"
+
         else
-          render action: 'show'
+          flash[:notice] = 'Product cannot be deleted because product has
+           existing orders'
+           redirect_to product_path(@product)
         end
 
     end
