@@ -1,5 +1,85 @@
-
-<b> Client Name:  <%= @client.first_name %> <%= @client.last_name %> </b>
-<br><br>
-<%= link_to 'Create New Order', new_client_order_path(@client) %> <br>
-<%= link_to 'View All Orders', client_orders_path(@client) %>
+<div class="main-content">
+<section class="section">
+   <div class="section-header">
+      <h1>Cliente:  <%= @client.first_name %> <%= @client.last_name %> </h1>
+   </div>
+</section>
+<div class="row">
+   <div class="col-6 col-md-6 col-lg-6">
+      <div class="card">
+         <%= form_for @client do |f| %>
+         <div class="card-body">
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                  <label> Nombre </label>
+                  <%= f.text_field :first_name, class: "form-control", placeholder: "", disabled:true%>
+               </div>
+               <div class="form-group col-md-6">
+                  <%= f.label :last_name %>
+                  <%= f.text_field :last_name, class: "form-control", placeholder: "", disabled:true%>      
+               </div>
+            </div>
+            <div class="form-group">
+               <%= f.label :address %>
+               <%= f.text_field :address, class: "form-control", placeholder: "", disabled:true%>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                  <%= f.label :sec_no %>
+                  <%= f.text_field :sec_no, class: "form-control", placeholder: "", disabled:true%>
+               </div>
+               <div class="form-group col-md-6">
+                  <%= f.label :phone %>
+                  <%= f.text_field :phone, class: "form-control", placeholder: "", disabled:true%>
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-6">
+               </div>
+               <div class="form-group col-md-6">
+               </div>
+            </div>
+            <div class="form-row">
+               <div class="form-group col-md-6">
+                  <label for="inputCity">Ciudad</label>
+                  <input type="text" class="form-control" id="inputCity">
+               </div>
+               <div class="form-group col-md-4">
+                  <label for="inputState">Estado</label>
+                  <select id="inputState" class="form-control">
+                     <option selected>Choose...</option>
+                     <option>...</option>
+                  </select>
+               </div>
+               <div class="form-group col-md-2">
+                  <label for="inputZip">Zip</label>
+                  <input type="text" class="form-control" id="inputZip">
+               </div>
+            </div>
+            <div class="client-show-edit">
+               <button class="btn btn-primary m-3 float-right">
+               <%= link_to "Editar", edit_client_path %>
+               </button>
+            </div>
+         </div>
+         <% end %>
+      </div>
+   </div>
+   <div class="col-6 col-md-6 col-lg-6">
+      <div class="card">
+         <div class="card-header">
+            <h2>Ordenes Activas</h2>
+         </div>
+         <div class="card-body">
+            Some order <br>
+            Some order <br>
+            Some order <br>
+            Some order <br>
+            Some order <br>
+            <button class="btn btn-primary m-3 float-right">
+            Ver todas
+            </button>
+         </div>
+      </div>
+   </div>
+</div>

@@ -1,21 +1,25 @@
-<% if @client%>
-<b>
-<%= link_to name(@client), @client%> has <%= @orders.count%> orders
-</b>
-<% elsif @product %>
-<b>
-<%= link_to @product.name, @product %> has <%= @orders.count%> orders
-</b>
-<% end %>
-<ul>
-  <% @orders.each do |order| %>
-    <li>
-      <%= time_ago_in_words(order.created_at)%> ago <br>
-      <% if @client %>
-      <%= link_to title(order), client_order_path(@client, order) %>
-      <% elsif @product%>
-      <%= link_to title(order), product_order_path(@product, order) %>
+
+<div class="main-content">
+<section class="section">
+   <div class="section-header">
+      <h1>Ordenes</h1>
+   </div>
+</section>
+<div class="col-12 col-md-6 col-lg-6">
+   <div class="m-2 p-2">
+      <h3><%= link_to name(@client), @client%> tiene <%= @orders.count%> órdenes</h3>
+      <% @orders.each do |order| %>
+      <div class="card">
+         <div class="card-header">
+            <span class="badge badge-success orders-list"> <%= link_to title(order), client_order_path(@client, order) %> </span>
+         </div>
+         <div class="card-body">
+            This is some Order description.
+         </div>
+         <div class="card-footer bg-whitesmoke float-right">
+            <%= time_ago_in_words(order.created_at)%> ago <br>
+         </div>
+      </div>
       <% end %>
-      </li>
-      <% end %>
-      </ul>
+   </div>
+</div>
