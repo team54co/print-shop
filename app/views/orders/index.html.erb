@@ -12,7 +12,7 @@
 
       <div class="my-3"> <h2> Activas </h2></div>
       <% @orders.each do |order| %>
-      <div class="card">
+      <div class="card shadow">
          <div class="card-header">
             <span class="badge badge-success orders-list"> <%= link_to title(order), client_order_path(@client, order) %> </span>
          </div>
@@ -29,7 +29,7 @@
        
        <div class="my-3"> <h2> Anteriores </h2></div>
       <% @orders.each do |order| %>
-      <div class="card">
+      <div class="card shadow">
          <div class="card-header">
             <span class="badge badge-secondary orders-list"> <%= link_to title(order), client_order_path(@client, order) %> </span>
          </div>
