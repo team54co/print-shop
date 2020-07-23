@@ -1,6 +1,60 @@
-  <%= render partial: 'layouts/flash'%>
-<h4> All Products </h4>
-<% @products.each do |product| %>
-  <%= link_to product.name ,product %>
-  <br>
-<% end %>
+<div class="main-content">
+<section class="section">
+   <div class="section-header">
+      <h1>Productos</h1>
+   </div>
+</section>
+<div>
+<button class="btn btn-primary float-right m-3"> Agregar Producto </button>
+<div class="product-search">
+<div class="form-group m-0">
+   <label>Buscar</label>
+   <input type="text" class="form-control">
+</div>
+</div>
+<div class="product-search-tags">
+<div class="form-group m-0">
+   <label class="form-label"></label>
+   <div class="selectgroup selectgroup-pills">
+      <label class="selectgroup-item">
+      <input type="checkbox" name="value" value="HTML" class="selectgroup-input" checked="">
+      <span class="selectgroup-button">Flexo</span>
+      </label>
+      <label class="selectgroup-item">
+      <input type="checkbox" name="value" value="CSS" class="selectgroup-input">
+      <span class="selectgroup-button">Tarjetas</span>
+      </label>
+      <label class="selectgroup-item">
+      <input type="checkbox" name="value" value="PHP" class="selectgroup-input">
+      <span class="selectgroup-button">Planillas</span>
+      </label>
+      <label class="selectgroup-item">
+      <input type="checkbox" name="value" value="JavaScript" class="selectgroup-input">
+      <span class="selectgroup-button">Categoria #1</span>
+      </label>
+      <label class="selectgroup-item">
+      <input type="checkbox" name="value" value="Ruby" class="selectgroup-input">
+      <span class="selectgroup-button">Categoria #2</span>
+      </label>
+   </div>
+   </div>
+   
+   <div class="products-list my-3">
+   
+   <div class="flex row justify-content-around">
+      <% @products.each do |product| %>
+      <div class="card shadow col-3 m-2">
+   <%= image_tag "product03.jpg", class:"card-img-top w-100" %>
+  <div class="card-body">
+    <h5 class="card-title"><%=  product.name %></h5>
+    <p class="card-text"><%=  product.description %></p>
+    <span class="badge badge-primary">tags </span>
+    
+  </div>
+</div>
+         
+    
+      <% end %>
+   </div>
+   </div>
+</div>

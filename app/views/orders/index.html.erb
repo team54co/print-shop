@@ -1,4 +1,3 @@
-
 <div class="main-content">
 <section class="section">
    <div class="section-header">
@@ -7,7 +6,11 @@
 </section>
 <div class="col-12 col-md-6 col-lg-6">
    <div class="m-2 p-2">
+   <div class="ordenes-title my-3 py-3">
       <h3><%= link_to name(@client), @client%> tiene <%= @orders.count%> órdenes</h3>
+    </div>
+
+      <div class="my-3"> <h2> Activas </h2></div>
       <% @orders.each do |order| %>
       <div class="card">
          <div class="card-header">
@@ -19,7 +22,26 @@
          <div class="card-footer bg-whitesmoke float-right">
             <%= time_ago_in_words(order.created_at)%> ago <br>
          </div>
+          
       </div>
       <% end %>
-   </div>
+
+       
+       <div class="my-3"> <h2> Anteriores </h2></div>
+      <% @orders.each do |order| %>
+      <div class="card">
+         <div class="card-header">
+            <span class="badge badge-secondary orders-list"> <%= link_to title(order), client_order_path(@client, order) %> </span>
+         </div>
+         <div class="card-body">
+            This is some Order description.
+         </div>
+         <div class="card-footer bg-whitesmoke float-right">
+            <%= time_ago_in_words(order.created_at)%> ago <br>
+         </div>
+      </div>
+      <% end %>
+
+       </div>
+</div>
 </div>
