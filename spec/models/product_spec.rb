@@ -18,7 +18,6 @@ RSpec.describe Product, type: :model do
       expect(product).to_not be_valid
     end
 
-
     it 'ensures description is present' do
       product = Product.new(name: 'Test Product', price: 700, description: '')
       expect(product).to_not be_valid
@@ -32,6 +31,5 @@ RSpec.describe Product, type: :model do
     it 'creates a product successfully' do
       expect(product.id.nil?).to eq(false)
     end
-
   end
 end
