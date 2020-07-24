@@ -11,5 +11,16 @@ RSpec.describe Product, type: :model do
       product = Product.new(name: 'Test Product', price: 'a girl', description: 'A test product').save
       expect(product).to eq(false)
     end
+
+    it 'ensures price is present' do
+      product = Product.new(name: 'Test Product', price: '', description: 'A test product').save
+      expect(product).to eq(false)
+    end
+
+
+    it 'ensures description is present' do
+      product = Product.new(name: 'Test Product', price: 700, description: '').save
+      expect(product).to eq(false)
+    end
   end
 end
