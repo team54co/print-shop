@@ -12,9 +12,9 @@ class ProductsController < ApplicationController
     if product.save
       redirect_to product, notice: 'Product successfully created'
     else
-      render new
+      redirect_to(action: 'new')
     end
-    end
+  end
 
   def show
     @product = Product.find(params[:id])
