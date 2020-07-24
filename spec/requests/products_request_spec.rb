@@ -12,11 +12,16 @@ RSpec.describe 'Products', type: :request do
     end
   end
 
-  context 'it can create a new product' do 
+  context 'it can create a new product' do
     it 'creates a product' do
-        post_via_redirect products_path, :task => { :name => "mow lawn" }
-        response.body.should include("mow lawn")
+      post products_path, params: {product: {
+        name: 'Fliers',
+        description: 'A flier for testing',
+        price: 500
+      }}
+      follow_redirect!
+      expect(response.body).to include('Product successfully created')
+      expect(response).body.to include('A flier for testing')
     end
   end
-  
 end
