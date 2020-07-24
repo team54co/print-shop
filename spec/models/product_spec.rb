@@ -24,4 +24,14 @@ RSpec.describe Product, type: :model do
       expect(product).to_not be_valid
     end
   end
+
+  context 'properly creates product' do
+    let!(:products) { create_list(:product, 1) }
+    let(:product) { products.first }
+
+    it 'creates a product successfully' do
+      expect(product.id.nil?).to eq(false)
+    end
+
+  end
 end
